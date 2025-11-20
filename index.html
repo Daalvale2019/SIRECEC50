@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESAP - Escuela Superior de Administración Pública</title>
+    <!-- Carga de Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Configuración Tailwind para usar colores personalizados -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        // Se usan las variables CSS definidas en el bloque <style>
+                        'esap-blue': 'var(--color-esap-blue)',
+                        'esap-light': 'var(--color-esap-light)',
+                        'esap-green': 'var(--color-esap-green)',
+                    },
+                    fontFamily: {
+                        sans: ['Nunito sans light', 'sans-serif'],
+                    },
+                }
+            }
+        }
+    </script>
+    <!-- Carga de la fuente Nunito Sans -->
+    <link href="https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap" rel="stylesheet">
+
+    <!-- Bloque de Estilos CSS (integrado) -->
+    <style>
+        /* ------------------------------------------------------------------- */
+        /* Variables y Estilos Generales */
+        /* ------------------------------------------------------------------- */
+        :root {
+            --color-esap-blue: #0F62AC;
+            --color-esap-light: #3094EC;
+            --color-esap-green: #528160;
+            --color-esap-rose: #ff5977;
+            --color-esap-green2: #3bee74;
+            --color-esap-blue2: #64bbda;
+        }
+
+        /* Clases de utilidad para colores (si no se usa Tailwind nativamente) */
+        .text-esap-blue { color: var(--color-esap-blue); }
+        .bg-esap-blue { background-color: var(--color-esap-blue); }
+        .bg-esap-light { background-color: var(--color-esap-light); }
+        .bg-esap-green { background-color: var(--color-esap-green); }
+
+
+        /* ------------------------------------------------------------------- */
+        /* Estilos para el Slider Principal (Hero) */
+        /* ------------------------------------------------------------------- */
+        .slider-container {
+            overflow: hidden;
+            width: 100%;
+        }
+        .slider-wrapper {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .slider-item {
+            flex: 0 0 100%; /* Cada slide ocupa el 100% del contenedor */
+        }
+
+
+        /* ------------------------------------------------------------------- */
+        /* Estilos y Animación para el Slider de Aliados Estratégicos (Logos) */
+        /* ------------------------------------------------------------------- */
+        .logos-slider-wrapper {
+            display: flex;
+            /* Aplicar la animación definida abajo */
+            animation: slide-logos 30s linear infinite;
+            width: max-content; /* Permite que el wrapper sea más ancho que la pantalla para el loop */
+        }
+        .logos-slider-item {
+            flex: 0 0 auto;
+            margin-right: 2rem;
+            padding: 0 1rem;
+            /* Asegurar que las imágenes tengan espacio y altura consistente */
+            display: flex;
+            align-items: center;
+        }
+
+        /* Definición de la animación de carrusel infinito */
+        @keyframes slide-logos {
+            0% { transform: translateX(0); }
+            /* Mueve el 50% del contenido (un bloque completo de logos duplicados) */
+            100% { transform: translateX(-50%); } 
+        }
+    </style>
+</head>
+<body class="font-sans bg-gray-50 text-gray-800">
+
+    <!-- 1. Encabezado / Barra de Navegación -->
+    <header class="bg-white shadow-md sticky top-0 z-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex justify-between items-center">
+            <!-- Logo SIRECEC y ESAP (Usando texto placeholder) -->
+            <div class="flex items-center space-x-4">
+                <span class="text-esap-blue font-extrabold text-lg">SIRECEC</span>
+                <span class="text-gray-600 text-sm hidden sm:block">ESCUELA SUPERIOR DE ADMINISTRACIÓN PÚBLICA</span>
+            </div>
+            <!-- Menú de Navegación (Simplificado para el ejemplo) -->
+            <nav class="space-x-4 flex items-center">
+                <a href="#" class="text-gray-600 hover:text-esap-blue text-sm font-medium hidden md:inline-block">INICIO</a>
+                <a href="#" class="text-gray-600 hover:text-esap-blue text-sm font-medium hidden md:inline-block">INSTRUCTIVOS</a>
+                <a href="#" class="text-white bg-esap-blue px-3 py-1 rounded-full text-sm font-semibold hover:bg-esap-light transition">INGRESAR</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 2. Sección Principal - Slider (Hero) -->
+    <section class="relative h-[60vh] md:h-[80vh] bg-esap-blue overflow-hidden shadow-xl">
+        <div id="hero-slider" class="slider-container h-full">
+            <div class="slider-wrapper h-full">
+                <!-- Slide 1 -->
+                <div class="slider-item relative h-full">
+                    <img src="img/IMG_slider01.png" class="w-full h-full object-cover opacity-95" alt="Estudiante sonriendo">
+                    <div class="absolute inset-0 flex items-center justify-left p-8 bg-black bg-opacity-5">
+                        <div class="max-w-2xl text-black text-left">
+                            <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-4">
+                                Descubre cómo la ESAP 
+                                <br>transforma tu futuro con formación de calidad para todos</br> 
+                                 
+                               
+                            </h1>
+                            <a href="https://www.esap.edu.co" 
+   class="bg-white text-esap-blue font-bold px-6 py-3 rounded-full shadow-lg hover:bg-gray-200 transition">
+    Ver más
+</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slider-item relative h-full">
+                    <img src="img/IMG_slider02.png" class="w-full h-full object-cover opacity-60" alt="Profesor enseñando">
+                    <div class="absolute inset-0 flex items-center justify-center p-8 bg-black bg-opacity-30">
+                        <div class="max-w-4xl text-white text-center">
+                            <h1 class="text-4xl sm:text-6xl font-extrabold leading-tight mb-4">
+                                Educación de Alto Gobierno para líderes del sector público
+                            </h1>
+                            <a href="https://www.esap.edu.co" 
+   class="bg-white text-esap-blue font-bold px-6 py-3 rounded-full shadow-lg hover:bg-gray-200 transition">
+    Ver más
+</a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slider-item relative h-full">
+                    <img src="img/IMG_slider03.png" class="w-full h-full object-cover opacity-95" alt="Aula de clase">
+                    <div class="absolute inset-0 flex items-center justify-left p-8 bg-black bg-opacity-10">
+                        <div class="max-w-4xl text-black text-left">
+                            <h1 class="text-4xl sm:text-5xl font-extrabold leading-tight mb-4">
+                                Rutas de aprendizaje: 
+                                <br>áreas del saber público a tu alcance</br>
+                            </h1>
+                            <a href="https://www.esap.edu.co" 
+   class="bg-white text-esap-blue font-bold px-6 py-3 rounded-full shadow-lg hover:bg-gray-200 transition">
+    Ver más
+</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Botones de navegación del slider -->
+        <button id="hero-prev" class="absolute top-1/2 left-4 transform -translate-y-1/2 text-white p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition z-20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <button id="hero-next" class="absolute top-1/2 right-4 transform -translate-y-1/2 text-white p-2 rounded-full bg-black bg-opacity-50 hover:bg-opacity-75 transition z-20">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" /></svg>
+        </button>
+        <!-- Puntos de indicación -->
+        <div id="hero-dots" class="absolute bottom-4 left-1/2 transform -translate-x-1/2 flex space-x-2 z-20">
+            <!-- Los puntos se añadirán con JavaScript -->
+        </div>
+    </section>
+
+    <!-- 3. Sección de Contenido: Dirección de Capacitación & Alto Gobierno () -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        
+        <div class="grid md:grid-cols-1 gap-8 mb-12">
+            <!-- Dirección de Capacitación -->
+            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-center space-x-4 border-l-4 border-esap-light">
+                <img src="img/IMG_Direccion_capacitacion.png"  alt="Imagen de capacitación">
+                <div>
+                    <h2 class="text-4xl font-extrabold text-esap-light mb-3">Dirección de Capacitación</h2>
+                    <p class="text-gray-600 mb-4">Pone a disposición de las entidades públicas y la ciudadanía en general su oferta de capacitación en educación informal...</p>
+                    <a href="https://www.esap.edu.co" class="inline-block text-white bg-esap-light font-medium px-4 py-2 rounded-full text-sm hover:bg-blue-600 transition">Ver más</a>
+                </div>
+            </div>
+<p>
+</p>
+            <!-- Alto Gobierno -->
+            <div class="bg-white p-6 rounded-xl shadow-lg flex flex-col md:flex-row items-center space-x-4 border-l-4 border-gray-800">
+                <img src="img/IMG_alto_gobierno.png"  alt="Imagen de alto gobierno">
+                <div>
+                    <h2 class="text-4xl font-extrabold text-gray-800 mb-3">Alto Gobierno</h2>
+                    <p class="text-gray-600 mb-4">La Escuela de Alto Gobierno de la ESAP ofrece de manera presencial y virtual su amplia oferta académica a través de cursos...</p>
+                    <a href="https://www.esap.edu.co" class="inline-block text-white bg-gray-800 font-medium px-4 py-2 rounded-full text-sm hover:bg-gray-600 transition">Ver más</a>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Rutas de Aprendizaje -->
+        <h2 class="text-4xl font-extrabold text-esap-blue text-center mb-10">Rutas de aprendizaje - "áreas del saber público"</h2>
+        <div class="grid grid-cols-2 md:grid-cols-5 gap-4 text-center">
+            <!-- Item 1 -->
+            <div class="bg-[#0062b2] p-4 rounded-xl shadow-md flex flex-col items-center justify-center h-50 hover:scale-[1.02] transition">
+                <img src="img/rutas/IMG-Organizaciones_publicas_gestion-ft.png" class="w-full h-full object-cover opacity-90" alt="">
+                <a href="https://www.esap.edu.co" class="text-white font-bold text-sm">Organizaciones Públicas y Gestión</a>
+                
+                
+            </div>
+            <!-- Item 2 -->
+            <div class="bg-[#002d71] p-4 rounded-xl shadow-md flex flex-col items-center justify-center h-50 hover:scale-[1.02] transition">
+                <img src="img/rutas/IMG-estado_organizacion_y_sociedad_ft.png" class="w-full h-full object-cover opacity-90" alt="">
+                <a href="https://www.esap.edu.co" class="text-white font-bold text-sm">Estado, Gobierno y sociedad</a>
+                
+            </div>
+            <!-- Item 3 -->
+            <div class="bg-[#0062b2] p-4 rounded-xl shadow-md flex flex-col items-center justify-center h-50 hover:scale-[1.02] transition">
+                <img src="img/rutas/IMG-economia_publica_ft.png" class="w-full h-full object-cover opacity-90" alt="">
+                <a href="https://www.esap.edu.co" class="text-white font-bold text-sm">Economía Pública</a>
+                
+
+            </div>
+            <!-- Item 4 -->
+            <div class="bg-[#002d71] p-4 rounded-xl shadow-md flex flex-col items-center justify-center h-50 hover:scale-[1.02] transition">
+                <img src="img/rutas/IMG-gestion_territorial_ft.png" class="w-full h-full object-cover opacity-90" alt="">
+                <a href="https://www.esap.edu.co" class="text-white font-bold text-sm">Gestión Territorial</a>
+                
+
+            </div>
+            <!-- Item 5 -->
+            <div class="bg-[#0062b2] p-4 rounded-xl shadow-md flex flex-col items-center justify-center h-50 hover:scale-[1.02] transition">
+                <img src="img/rutas/IMG_complementario_ft.png" class="w-full h-full object-cover opacity-90" alt="">
+                <a href="https://www.esap.edu.co" class="text-white font-bold text-sm">Complementaria</a>
+    
+
+            </div>
+        </div>
+        
+        <!-- Oferta Académica -->
+        <div class="text-center my-16">
+            <h2 class="text-5xl font-extrabold text-esap-blue mb-4"></h2>
+                </div>
+            </div>
+
+        </div>
+    </main>
+<!-- Oferta Académica -->
+<style>
+    .text-esap-blue {
+        color: #007bff; /* Ajusta al color azul deseado */
+    }
+
+    .bg-esap-blue {
+        background-color: #007bff;
+    }
+
+    .flex-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+        background-color: #007bff;
+        color: white;
+        border-radius: 0.5rem;
+    }
+
+    .flex-row {
+        display: flex;
+        flex-direction: row;
+        gap: 20px;
+    }
+
+    .rounded-full {
+        border-radius: 9999px;
+    }
+
+    button:hover {
+        background-color: #555;
+    }
+
+    @media (min-width: 768px) {
+        .flex-row {
+            flex-direction: row;
+        }
+    } 
+</style>
+<section class="bg-esap-blue">
+<div class="text-center my-16">
+    <h2 class="text-5xl font-extrabold text-white mb-4">Encuentra nuestra oferta académica</h2>
+    <h2 class="text-5xl font-extrabold text-white mb-4">en todo el país</h2>
+    <div class="flex flex-col md:flex-row justify-center items-center space-y-4 md:space-y-0 md:space-x-8 mt-8">
+        <div class="flex-container">
+<!--  -->
+       <div class="grid grid-cols-2 md:grid-cols-2 gap-4 text-center">
+            <!-- Item 1 -->
+            <div class="bg-[#002d71] p-4 rounded-xl shadow-md flex flex-col items-center justify-center h-50 hover:scale-[1.02] transition">
+                <img src="img/IMG_oferta_nacional_central.png" class="w-full h-full object-cover opacity-90" alt="">
+                <span class="text-white font-bold text-sm">Oferta académica sede central</span>
+                <a href="https://www.esap.edu.co" class="text-2xl font-bold text-white underline">Ver oferta</a>
+                
+            </div>
+            <!-- Item 2 -->
+            <div class="bg-[#002d71] p-4 rounded-xl shadow-md flex flex-col items-center justify-center h-50 hover:scale-[1.02] transition">
+                <img src="img/IMG_oferta_territorial.png" class="w-full h-full object-cover opacity-90" alt="">
+                <span class="text-white font-bold text-sm">Oferta académica territorial</span>
+                <a href="https://www.esap.edu.co" class="text-2xl font-bold text-white underline">Ver oferta</a>
+             </div>
+             </div>   
+<!--  -->
+
+
+<a href="https://www.esap.edu.co" 
+   class="mt-8 bg-gray-800 text-white font-bold px-8 py-3 rounded-full shadow-lg hover:bg-gray-600 transition inline-block">
+    Ver toda la oferta académica
+</a>
+</div>
+</section>
+
+<!-- Oferta Académica -->
+
+
+    <!-- 4. Sección Aliados Estratégicos - Slider de Logos -->
+    <section class="py-12 bg-white shadow-inner">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-4xl font-extrabold text-esap-blue text-left mb-10">Aliados estratégicos</h2>
+            <img src="C:\Users\USUARIO\OneDrive\Escritorio\SIRECEC\Sirecec_50\img\aliados.png" alt="Descripción de la imagen" width="1400" height="400">
+            <div class="slider-container overflow-hidden whitespace-nowrap">
+                <div id="logos-slider" class="logos-slider-wrapper">
+                    <!-- Los logos se duplican para crear un loop infinito fluido -->
+                    <!-- Bloque de logos originales -->
+                    <div class="logos-slider-item">
+                    <a href="https://www.presidencia.gov.co/" target="_blank">
+                    <img src="img/IMG_logo_presidencia.png" class="h-16 w-auto object-contain" alt="Logo Presidencia">
+                    </a>
+                    </div>
+                    <div class="logos-slider-item">
+                    <a href="https://www.mintrabajo.gov.co" target="_blank">
+                    <img src="img/IMG_logo_mintrabajo.png" class="h-16 w-auto object-contain" alt="Logo Min Trabajo">
+                    </a>
+                    </div>
+                    <div class="logos-slider-item">
+                    <a href="https://www.minjusticia.gov.co/" target="_blank">
+                   <img src="img/IMG_logo_minjusticia.png" class="h-16 w-auto object-contain" alt="Logo Min Justicia">
+                   </a>
+                    </div>
+                   <div class="logos-slider-item">
+                   <a href="https://www.cancilleria.gov.co/" target="_blank">
+                   <img src="img/IMG_logo_cancilleria.png" class="h-16 w-auto object-contain" alt="Logo Cancillería">
+                   </a>
+                   </div>
+                 <div class="logos-slider-item">
+                   <a href="https://unicef.org.co/" target="_blank">
+                   <img src="img/IMG_logo_unicef.png" class="h-16 w-auto object-contain" alt="Logo UNICEF">
+                   </a>
+                   </div>
+                    <div class="logos-slider-item">
+                    <a href="https://www.policia.gov.co/" target="_blank">
+                    <img src="img/IMG_logo_polnal.png" class="h-16 w-auto object-contain" alt="Logo Policía Nacional">
+                    </a>
+                    </div>
+
+                    <!-- Bloque de logos duplicados para el loop -->
+                    <div class="logos-slider-item">
+                    <a href="https://www.presidencia.gov.co/" target="_blank">
+                    <img src="img/IMG_logo_presidencia.png" class="h-16 w-auto object-contain" alt="Logo Presidencia">
+                    </a>
+                    </div>
+                    <div class="logos-slider-item">
+                    <a href="https://www.mintrabajo.gov.co" target="_blank">
+                    <img src="img/IMG_logo_mintrabajo.png" class="h-16 w-auto object-contain" alt="Logo Min Trabajo">
+                    </a>
+                    </div>
+                    <div class="logos-slider-item">
+                    <a href="https://www.minjusticia.gov.co/" target="_blank">
+                    <img src="img/IMG_logo_minjusticia.png" class="h-16 w-auto object-contain" alt="Logo Min Justicia">
+                    </a>
+                    </div>
+                   <div class="logos-slider-item">
+                   <a href="https://www.cancilleria.gov.co/" target="_blank">
+                   <img src="img/IMG_logo_cancilleria.png" class="h-16 w-auto object-contain" alt="Logo Cancillería">
+                   </a>
+                   </div>
+                   <div class="logos-slider-item">
+                   <a href="https://unicef.org.co/" target="_blank">
+                   <img src="img/IMG_logo_unicef.png" class="h-16 w-auto object-contain" alt="Logo UNICEF">
+                   </a>
+                   </div>
+                    <div class="logos-slider-item">
+                    <a href="https://www.policia.gov.co/" target="_blank">
+                    <img src="img/IMG_logo_polnal.png" class="h-16 w-auto object-contain" alt="Logo Policía Nacional">
+                    </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. Sección de Nuestros Usuarios  -->
+    <section class="py-12 bg-esap-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <br>
+                        <h2 class="text-4xl font-extrabold text-esap-blue text-center mb-10">Nuestros usuarios</h2>
+           </br>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Tarjeta de Usuario 1 -->
+                <div class="bg-[#ff5977] p-6 rounded-xl shadow-lg text-center">
+                    <img src="img/testimonio/test1.png" class="w-20 h-20 object-cover rounded-full mx-auto mb-4" alt="Usuario 1">
+                    <p class="text-black text-sm">Pone a disposición de las entidades públicas y la ciudadanía en general su oferta de capacitación en educación informal que responde a los lineamientos del Plan Nacional de Desarrollo.</p>
+                </div>
+                <!-- Tarjeta de Usuario 2 -->
+                <div class="bg-[#3bee74] p-6 rounded-xl shadow-lg text-center">
+                    <img src="img/testimonio/test2.png" class="w-20 h-20 object-cover rounded-full mx-auto mb-4" alt="Usuario 2">
+                    <p class="text-black text-sm">Pone a disposición de las entidades públicas y la ciudadanía en general su oferta de capacitación en educación informal que responde a los lineamientos del Plan Nacional de Desarrollo.</p>
+                </div>
+                <!-- Tarjeta de Usuario 3 -->
+                <div class="bg-[#64bbda] p-6 rounded-xl shadow-lg text-center">
+                    <img src="img/testimonio/test3.png" class="w-20 h-20 object-cover rounded-full mx-auto mb-4" alt="Usuario 3">
+                    <p class="text-black text-sm">Pone a disposición de las entidades públicas y la ciudadanía en general su oferta de capacitación en educación informal que responde a los lineamientos del Plan Nacional de Desarrollo.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 6. Pie de Página -->
+    <footer class="bg-gray-800 text-white py-6">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            <p>&copy; 2025 Escuela Superior de Administración Pública - ESAP. Todos los derechos reservados.</p>
+            <p class="mt-2"><a href="#" class="hover:text-esap-light transition">Términos y Condiciones</a> | <a href="#" class="hover:text-esap-light transition">Política de Privacidad</a></p>
+        </div>
+    </footer>
+
+    <!-- Bloque de Lógica JavaScript (Reintegrado) -->
+    <script>
+        // =================================================================
+        // JAVASCRIPT para el Slider Principal (Hero)
+        // =================================================================
+        const sliderWrapper = document.querySelector('#hero-slider .slider-wrapper');
+        const slides = document.querySelectorAll('#hero-slider .slider-item');
+        const prevButton = document.getElementById('hero-prev');
+        const nextButton = document.getElementById('hero-next');
+        const dotsContainer = document.getElementById('hero-dots');
+        let currentIndex = 0;
+        let slideInterval;
+
+        const totalSlides = slides.length;
+
+        /**
+         * 1. Inicializa los puntos de navegación del slider (dots).
+         */
+        const createDots = () => {
+            slides.forEach((_, index) => {
+                const dot = document.createElement('button');
+                // Clases de Tailwind para estilo y transición
+                dot.classList.add('w-3', 'h-3', 'rounded-full', 'bg-white', 'opacity-50', 'hover:opacity-100', 'transition');
+                dot.addEventListener('click', () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+            updateDots();
+        };
+
+        /**
+         * 2. Mueve el slider a un índice específico.
+         * @param {number} index - El índice del slide al que moverse.
+         */
+        const goToSlide = (index) => {
+            // Asegura que el índice esté dentro de los límites y permite el loop
+            currentIndex = (index + totalSlides) % totalSlides;
+            const offset = -currentIndex * 100;
+            sliderWrapper.style.transform = `translateX(${offset}%)`;
+            updateDots();
+            resetInterval();
+        };
+
+        /**
+         * 3. Actualiza la apariencia del punto activo.
+         */
+        const updateDots = () => {
+            Array.from(dotsContainer.children).forEach((dot, index) => {
+                dot.classList.remove('opacity-100');
+                dot.classList.add('opacity-50');
+                if (index === currentIndex) {
+                    dot.classList.add('opacity-100');
+                }
+            });
+        };
+
+        /**
+         * 4. Inicia el carrusel automático.
+         */
+        const startInterval = () => {
+            slideInterval = setInterval(() => {
+                goToSlide(currentIndex + 1);
+            }, 5000); // Cambia cada 5 segundos
+        };
+
+        /**
+         * 5. Reinicia el intervalo del carrusel (usado en navegación manual).
+         */
+        const resetInterval = () => {
+            clearInterval(slideInterval);
+            startInterval();
+        };
+
+
+        // 6. Asignación de eventos de navegación
+        prevButton.addEventListener('click', () => goToSlide(currentIndex - 1));
+        nextButton.addEventListener('click', () => goToSlide(currentIndex + 1));
+
+
+        // =================================================================
+        // JAVASCRIPT para el Slider de Aliados Estratégicos (Animación de pausa)
+        // =================================================================
+        const logosSlider = document.getElementById('logos-slider');
+
+        // Pausa la animación CSS al pasar el mouse por encima
+        logosSlider.addEventListener('mouseenter', () => {
+            logosSlider.style.animationPlayState = 'paused';
+        });
+
+        // Reanuda la animación al quitar el mouse
+        logosSlider.addEventListener('mouseleave', () => {
+            logosSlider.style.animationPlayState = 'running';
+        });
+
+
+        // 7. Inicializar al cargar la ventana
+        window.onload = function() {
+            createDots();
+            startInterval();
+        };
+    </script>
+</body>
+</html>
